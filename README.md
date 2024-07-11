@@ -1,4 +1,4 @@
-## Estrutura do Projeto
+# Estrutura do Projeto
 
 modules/irsa_ebs_csi/main.tf
 addons.tf
@@ -7,7 +7,7 @@ outputs.tf
 terraform.tf
 variables.tf
 
-1. modules/irsa_ebs_csi/main.tf
+## modules/irsa_ebs_csi/main.tf
 
 Este módulo cria uma Role e uma Policy no IAM (Identity and Access Management) da AWS para o driver EBS CSI (Elastic Block Store Container Storage Interface). Isso permite que o driver EBS CSI no seu cluster EKS (Elastic Kubernetes Service) tenha as permissões necessárias para interagir com os volumes EBS.
 
@@ -25,7 +25,7 @@ Política (aws_iam_policy.ebs_csi_policy): Verifique e ajuste as permissões nec
 
 Anexo de Política (aws_iam_role_policy_attachment.ebs_csi_attach): Verifique se o ARN da política e o nome da role estão corretos para o novo projeto.
 
-2. addons.tf
+## addons.tf
 
 Este arquivo define a instalação de vários add-ons no cluster EKS.
 
@@ -40,7 +40,7 @@ Adiciona o add-on aws-ebs-csi-driver para permitir que o cluster EKS use volumes
 
 Add-ons: Verifique os add-ons necessários para o novo projeto e ajuste conforme necessário. Por exemplo, você pode precisar de add-ons específicos para segurança, monitoramento ou gerenciamento de recursos.
 
-3. main.tf
+## main.tf
 
 Este é o arquivo principal onde a infraestrutura é definida.
 
@@ -63,7 +63,7 @@ Módulo VPC (module "vpc"): Configure o módulo VPC com o bloco CIDR desejado pa
 
 Módulo EKS (module "eks"): Defina o nome do cluster, versão do EKS, tipos de instâncias, configurações de segurança e outros parâmetros conforme necessário para o novo ambiente.
 
-4. outputs.tf
+## outputs.tf
 
 Este arquivo define as saídas do Terraform, que são valores que podem ser utilizados posteriormente.
 
@@ -78,7 +78,7 @@ Exibe o nome do cluster EKS.
 
 Saídas (output): Verifique e ajuste as saídas conforme as informações que você precisa acessar após a implantação do novo projeto, como endpoints, IDs de segurança, região, nome do cluster, etc.
 
-5. terraform.tf
+## terraform.tf
 
 Este arquivo configura o Terraform e os providers necessários.
 
@@ -91,7 +91,7 @@ Especifica a versão mínima do Terraform que deve ser utilizada.
 
 Providers (required_providers): Verifique e atualize as versões dos providers conforme necessário para o novo projeto, garantindo compatibilidade com as versões mais recentes e estáveis.
 
-6. variables.tf
+## variables.tf
 
 Este arquivo define as variáveis que serão utilizadas em todo o projeto.
 
@@ -105,10 +105,11 @@ Variáveis (variable): Adicione ou remova variáveis conforme necessário para c
 
 
 
-# Estrutura e Nomes de Recursos do Projeto Terraform
+### Estrutura e Nomes de Recursos do Projeto Terraform
 
 Módulo IRSA EBS CSI (modules/irsa_ebs_csi/main.tf)
 
+```yaml
 Role IAM:
     Nome: ebs-csi-role
     Política Anexada: Permissões para gerenciar volumes EBS (Attach, Detach, CreateSnapshot, DeleteSnapshot, Describe*).
@@ -132,10 +133,11 @@ Add-ons (addons.tf)
         Nome: aws-ebs-csi-driver
         Versão: v1.32.0-eksbuild.1
         Role do Service Account: ebs-csi-role
-
+```
 
 Configuração Principal (main.tf)
 
+```yaml
 VPC (module "vpc"):
     Nome: cluster-vpc
     CIDR da VPC: 10.0.0.0/16
@@ -157,10 +159,11 @@ Node Group 2:
     Nome: node-group-2
         Tipo de Instância: t3.small
         Mínimo/Máximo/Desired Size: 1/4/2
-
+```
 
 Saídas (outputs.tf)
 
+```yaml
 Endpoint do Cluster EKS:
     Descrição: Endpoint para o plano de controle do EKS
     Valor: <endpoint do seu cluster>
@@ -176,7 +179,7 @@ Região AWS:
 Nome do Cluster Kubernetes:
     Descrição: Nome do cluster EKS na AWS
     Valor: cluster-eks-nomedocliente
-
+```
 
 # Passos para Executar o Projeto na AWS:
 
