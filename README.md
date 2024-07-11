@@ -105,7 +105,7 @@ Variáveis (variable): Adicione ou remova variáveis conforme necessário para c
 
 
 
-### Estrutura e Nomes de Recursos do Projeto Terraform
+# Estrutura e Nomes de Recursos do Projeto Terraform
 
 Módulo IRSA EBS CSI (modules/irsa_ebs_csi/main.tf)
 
@@ -113,9 +113,12 @@ Módulo IRSA EBS CSI (modules/irsa_ebs_csi/main.tf)
 Role IAM:
     Nome: ebs-csi-role
     Política Anexada: Permissões para gerenciar volumes EBS (Attach, Detach, CreateSnapshot, DeleteSnapshot, Describe*).
+```
 
 
 Add-ons (addons.tf)
+
+```yaml
     AWS EKS Add-ons:
 
     VPC-CNI:
