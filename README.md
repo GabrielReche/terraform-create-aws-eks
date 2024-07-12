@@ -17,7 +17,7 @@ Criação de uma Role no IAM que permite ao EKS assumir a Role.
 Definição de uma Policy que permite ao driver EBS CSI executar ações específicas no serviço EC2.
 Anexação da Policy à Role criada.
 
-## Informaçõoes para mudar em um novo projeto - main.tf
+## Informações para mudar em um novo projeto - main.tf
 
 Nome da Role (aws_iam_role.this): Altere o nome da role conforme a convenção de nomenclatura do seu novo projeto.
 
